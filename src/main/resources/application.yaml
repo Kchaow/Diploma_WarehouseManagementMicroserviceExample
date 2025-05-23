@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: WarehouseManagement
+
+server:
+  port: 8007
+  servlet:
+    context-path: /api/v1
+
+integration:
+  analytics-url: http://localhost:8010/api/v1
