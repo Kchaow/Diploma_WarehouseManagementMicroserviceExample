@@ -1,5 +1,7 @@
 pipeline {
 	agent any
+	booleanParam(name: 'skip_build', defaultValue: false, description: 'Поставить true, чтобы не проводить сборку проекта')
+    }
 
     environment {
 		MAVEN_HOME = '/usr/share/maven'
@@ -18,6 +20,7 @@ pipeline {
         }
 
         stage('Build with Maven') {
+		when { expression { params.skip_build != true } }
 			steps {
 				sh '${MAVEN_HOME}/bin/mvn clean package'
             }
